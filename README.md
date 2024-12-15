@@ -12,37 +12,44 @@ Written at the Chair of Applied Econometrics at TUM School of Management in 2024
 ### Folders
 - **`Data Sources`**:  
   Contains the raw datasets used in the analysis:
-  - `covid.csv`: COVID-19 data, including new cases per 100k for the EU countries. (Original source had worldwide data, however due to GitHub file size limitations, this was cut down to the EU-27 countries. This does not affect the `Data Setup.R` script)
-  - `flight_arrivals.csv`: Data on flight arrivals for the EU countries.
-  - `flight_departures.csv`: Data on flight departures for the EU countries.
-  - `international_travel_covid.csv`: Data on international travel restrictions during the pandemic.
-  - `tourism.csv`: Data on tourism arrivals for the selected countries.
+  - `covid.csv`: 
+    COVID-19 data, including new cases per 100k for the EU countries. (Original source had worldwide data, however due to GitHub file size limitations, this was cut down to the EU-27 countries. This does not affect the `Data Setup.R` script)
+  - `flight_arrivals.csv`: 
+    Data on flight arrivals for the EU countries.
+  - `flight_departures.csv`: 
+    Data on flight departures for the EU countries.
+  - `international_travel_covid.csv`: 
+    Data on international travel restrictions during the pandemic.
+  - `tourism.csv`: 
+    Data on tourism arrivals for the selected countries.
 
 `covid.csv` and `international_travel_covid.csv` are given as backup in case the web download is not available anymore.
 
 
 - **`LaTeX Sources`**:  
-  Contains the raw LaTeX file for compiling the PDF version
-  -`TODO.tex`: 
-  -`references.bib` contains all literature and data sources
+  Contains the source files needed to compile the PDF version of the thesis.  
+  - `TODO.tex`: 
+    The main LaTeX file for the Bachelor Thesis.  
+  - `references.bib`: 
+    Bibliography file listing all referenced literature and data sources.
 
 - **`R Files`**:  
   Contains all scripts and subfolders related to the analysis:
-  - **`Data Setup.R`**:  
+  - `Data Setup.R`:  
     Script for loading, cleaning, and merging the datasets. This file also lists the required R packages for running the analysis.
-  - **`Regression.R`**:  
+  - `Regression.R`:  
     Script for performing regression analysis, including configurations and outputs.
-  - **`Plots`**:  
+  - `Plots`:  
     Folder containing R scripts used to generate the visualizations included in the thesis.
-  - **`Tables`**:  
+  - `Tables`:  
     Folder containing R scripts used to create tables presented in the thesis.
 
 ### Files
-- **`README.md`**:  
+- `README.md`:  
   The current file, providing an overview of the repository structure and instructions for use.
-- **`Bachelor Thesis.pdf`**:  
+- `Bachelor Thesis.pdf`:  
   Final PDF Version of the Thesis.
-- **`Permission to View.pdf`**:  
+- `Permission to View.pdf`:  
   Requirement of the University to view the Thesis.
 
 ## Usage

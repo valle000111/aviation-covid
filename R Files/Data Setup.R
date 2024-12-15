@@ -8,7 +8,7 @@ packages <- c("dplyr", "ggplot2", "lubridate", "plm", "kableExtra",
 # Install all packages
 install.packages(packages)
 
-# Load all packages without repetitive output
+# Load all packages
 invisible(lapply(packages, library, character.only = TRUE))
 
 

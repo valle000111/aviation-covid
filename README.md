@@ -7,6 +7,8 @@ This repository contains the final code and datasets used for the analysis prese
 The Impact of COVID-19 on the Number of Flight Passengers in the European Union: A Pre-, During-, and Post-Pandemic Analysis.  
 Written at the Chair of Applied Econometrics at TUM School of Management in 2024.
 
+<img src="./Screenshot.png" alt="Screenshot of Figure 2" width="600">
+
 ## Repository Structure
 
 ### Folders
@@ -28,29 +30,28 @@ Written at the Chair of Applied Econometrics at TUM School of Management in 2024
 
 - **`LaTeX Sources`**:  
   Contains the source files needed to compile the PDF version of the thesis.  
-  - `TODO.tex`: 
+  - `thesis.tex`: 
     The main LaTeX file for the Bachelor Thesis.  
   - `references.bib`: 
     Bibliography file listing all referenced literature and data sources.
 
 - **`R Files`**:  
   Contains all scripts and subfolders related to the analysis:
-  - `Data Setup.R`:  
+  - `Data Setup.R`: 
     Script for loading, cleaning, and merging the datasets. This file also lists the required R packages for running the analysis.
-  - `Regression.R`:  
+  - `Regression.R`: 
     Script for performing regression analysis, including configurations and outputs.
-  - `Plots`:  
+  - `Plots`: 
     Folder containing R scripts used to generate the visualizations included in the thesis.
-  - `Tables`:  
+  - `Tables`: 
     Folder containing R scripts used to create tables presented in the thesis.
 
 ### Files
-- `README.md`:  
+- `README.md`: 
   The current file, providing an overview of the repository structure and instructions for use.
-- `Bachelor Thesis.pdf`:  
+- `Bachelor Thesis.pdf`: 
   Final PDF Version of the Thesis.
-- `Permission to View.pdf`:  
-  Requirement of the University to view the Thesis.
+
 
 ## Usage
 To replicate the analysis, follow these steps:

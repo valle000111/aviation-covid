@@ -1,0 +1,983 @@
+\documentclass[12pt,onehalfspacing,headsepline,oneside,openright,a4paper, fleqn]{report}
+
+% Encoding and Language
+\usepackage[utf8]{inputenc} % Basic encoding package
+\usepackage[T1]{fontenc}    % Font encoding
+\usepackage[ngerman,english]{babel} % Language settings
+
+% Bibliography
+\usepackage[style=authoryear, backend=bibtex]{biblatex}
+%\usepackage[style=apa, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+% Page Layout
+\usepackage{geometry} % For customizing page layout
+\newgeometry{tmargin=2.5cm,bmargin=2.5cm,lmargin=3cm,rmargin=3cm}
+\usepackage{titlesec} % For customizing chapter styles
+\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter.}{20pt}{\huge\bfseries}
+\usepackage{fancyhdr} % For header and footer customization
+
+% Graphics and Color
+\usepackage{graphicx} % For including figures and images
+\usepackage[xcdraw,table]{xcolor} % For colored tables and text
+\usepackage{tikz} % For mathematical drawings
+
+% Table Formatting
+\usepackage{array} % Different options for table cell orientation
+\usepackage{booktabs} % For enhanced table rules
+\usepackage{multirow} % For merging cells over multiple rows
+\usepackage{makecell} % For customizable table cells
+\usepackage{tabularx} % For table alignment and column resizing
+\usepackage{caption} % For caption customization
+\usepackage{subcaption} % For subfigure captions
+\usepackage{threeparttable} % For notes below tables
+\usepackage{rotating} % For rotating tables and figures
+\usepackage{tablefootnote} % For table-specific footnotes
+\usepackage{float} % For controlling table and figure placements
+\usepackage[justification=centering]{caption}
+
+% Mathematics and Symbols
+\usepackage{amsmath,amsthm,amsfonts,amssymb} % For math symbols and environments
+\usepackage{siunitx} % For consistent numerical and unit formatting
+\setlength{\mathindent}{20pt}
+
+% Text Formatting
+\usepackage{adjustbox} % For centering wide content
+\usepackage{xcolor} % For text coloring
+\usepackage{csquotes} % For quotation formatting
+\usepackage{eurosym} % For the Euro symbol
+\usepackage{setspace} % For adjusting line spacing
+\usepackage{lipsum} % For generating placeholder text
+
+
+% Hyperlinks
+\usepackage{hyperref} % For inserting hyperlinks and coloring internal references
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black % All URLs are black by default
+}
+%\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=TUMBlue]{hyperref}
+
+% Acronyms and Glossaries
+\usepackage[acronym,toc,nonumberlist]{glossaries}
+\makeglossaries
+
+
+% Counters and Margins
+\usepackage{chngcntr} % For resetting counters
+\counterwithout{figure}{chapter}
+
+% PDF Management
+\usepackage{pdfpages} % For including multi-page PDFs
+
+% Miscellaneous
+\usepackage{url} % For URL formatting
+\usepackage{fancyvrb} % For verbatim text and code replay
+
+% Packages for Special Use Cases
+% Uncomment as needed
+% \usepackage{subfig} % For subfigure environments
+% \renewcommand{\familydefault}{\sfdefault} % Uncomment for sans-serif font family
+
+
+
+% Define your acronyms here
+%\setabbreviationstyle[acronym]{long-short}
+\newacronym{apac}{APAC}{Asia-Pacific}
+\newacronym{fsnc}{FSNC}{Full-Service Network Carrier}
+\newacronym{fsncs}{FSNCs}{Full-Service Network Carriers}
+\newacronym{gmf}{GMF}{Global Market Forecast}
+\newacronym{itc}{ITC}{International Travel Controls}
+\newacronym{lcc}{LCC}{Low-Cost Carrier} 
+\newacronym{lcs}{LCCs}{Low-Cost Carriers}
+\newacronym{mice}{MICE}{Meetings, Incentives, Conferencing, Exhibitions}
+\newacronym{rpk}{RPK}{Revenue Passenger Kilometer}
+\newacronym{yoy}{YoY}{Year-over-Year}
+
+
+
+% Define TUM corporate design colors
+% Taken from http://portal.mytum.de/corporatedesign/index_print/vorlagen/index_farben
+\definecolor{TUMBlue}{HTML}{0065BD}
+\definecolor{TUMSecondaryBlue}{HTML}{005293}
+\definecolor{TUMSecondaryBlue2}{HTML}{003359}
+\definecolor{TUMBlack}{HTML}{000000}
+\definecolor{TUMWhite}{HTML}{FFFFFF}
+\definecolor{TUMDarkGray}{HTML}{333333}
+\definecolor{TUMGray}{HTML}{808080}
+\definecolor{TUMLightGray}{HTML}{CCCCC6}
+\definecolor{TUMAccentGray}{HTML}{DAD7CB}
+\definecolor{TUMAccentOrange}{HTML}{E37222}
+\definecolor{TUMAccentGreen}{HTML}{A2AD00}
+\definecolor{TUMAccentLightBlue}{HTML}{98C6EA}
+\definecolor{TUMAccentBlue}{HTML}{64A0C8}
+
+
+\definecolor{blueColor}{HTML}{1F77B4}
+\definecolor{redColor}{HTML}{D62728}
+\definecolor{brown0}{HTML}{FFFFFF} % White
+\definecolor{brown1}{HTML}{E6C6B5} % Slightly darker beige
+\definecolor{brown2}{HTML}{D3B089} % Medium beige
+\definecolor{brown3}{HTML}{BF8E64} % Deep brown
+\definecolor{brown4}{HTML}{966043} % Dark chocolate brown
+
+
+
+% Thesis information
+\newcommand*{\getUniversity}{Technische Universität München}
+\newcommand*{\getFaculty}{School of Management}
+\newcommand*{\getTitle}{The Impact of COVID-19 on the Number of Flight Passengers in the European Union}
+\newcommand*{\getsubTitle}{A Pre-, During-, and Post-Pandemic Analysis}
+\newcommand*{\getTitleGer}{Titel der Abschlussarbeit}
+\newcommand*{\getDoctype}{Bachelor’s Thesis for the Attainment of the Degree Bachelor of Science at the School of Management of the Technical University of Munich}
+\newcommand*{\getSupervisor}{Prof. Dr. Helmut Farbmacher} 
+\newcommand*{\getChair}{Applied Econometrics} 
+\newcommand*{\getAdvisor}{Michael Mühlegger}
+\newcommand*{\getAuthor}{Valentin Baumeister}
+\newcommand*{\getAuthorAddress}{Redacted for Public Version}
+\newcommand*{\getAuthorMatrNr}{03735014}
+\newcommand*{\getSubmissionDate}{16.12.2024}
+\newcommand*{\getCourseofStudy}{Bachelor in Management \& Technology}
+
+% Document
+\begin{document}
+
+
+% Title Page
+\begin{titlepage}
+  \begin{flushright}
+  \IfFileExists{Images/TUM_Logo.jpg}{%
+    \includegraphics[height=15mm]{Images/TUM_Logo.jpg}
+  }{%
+    \vspace*{10mm}
+  }
+  \end{flushright}
+  
+\begin{flushleft}
+  \vspace{30mm}
+  {\huge\bfseries\getTitle{}}\\  
+   \vspace{10mm}
+   {\Large\bfseries\getsubTitle{}}\\  
+  
+  \vspace{30mm}
+  {\Large\getDoctype{}}\\
+    
+  \vspace{50mm}
+  
+  \begin{tabular}{l l}
+      Examiner:            & \getSupervisor{} \\
+      	Chair:             & \getChair{}\\
+    Supervisor:            & \getAdvisor{} \\
+  Study Program:           & \getCourseofStudy{} \\
+      Submitted by:        & \getAuthor{} \\
+        Address:           & \getAuthorAddress{}\\
+     Matriculation Number: & \getAuthorMatrNr{}\\
+     Submission Date:      & \getSubmissionDate{} \\
+  \end{tabular}
+ \end{flushleft}
+
+\end{titlepage}
+
+\pagenumbering{roman}
+
+
+
+\chapter*{\abstractname}
+
+The COVID-19 pandemic severely impacted the aviation industry, disrupting decades of consistent growth and bringing passenger numbers to record lows. This thesis investigates the impact of the pandemic on air travel in the EU, focusing on the main contributors to air passenger numbers, Spain, Germany, France and Italy. 
+
+Three main periods are analyzed, pre-pandemic (2012-2019), pandemic (2020-2022) and post-pandemic (2023 onwards), to evaluate how restrictions implemented by the government and COVID-19 cases influenced passenger volumes. Descriptive and regression analyses reveal that \gls{itc} had a significantly stronger impact on passenger numbers than COVID-19 case trends. Tourism-oriented markets like Spain and Italy showed faster recoveries in air passenger numbers compared to business-focused markets such as Germany and France.
+
+
+\vspace{5mm}
+\noindent\textbf{JEL Classifications:} L93, I18 \\
+\textbf{Keywords:} Aviation Industry, COVID-19 Pandemic, European Union
+
+
+
+
+% Table of Contents
+\tableofcontents
+
+% List of Figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+% List of Tables
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+
+\printglossary[type=\acronymtype]
+% \printglossary[type=\acronymtype, style=withdots]
+
+
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+
+The aviation industry has long been a major driver of global connectivity, promoting international trade and tourism. In recent decades it has experienced substantial growth, supported by technological advancements, expanding route networks and the growth of \gls{lcs}. This made air travel more accessible, contributing to the growth in passenger numbers and leading to expectations of consistent growth. However, this upward trend came to an abrupt decline due to the outbreak of the COVID-19 pandemic. 
+
+The impact of the pandemic on the aviation sector was immediate and severe. Governments introduced travel restrictions including border closures, quarantines and health screenings to contain the spread of the virus. Passenger numbers collapsed, resulting in unprecedented declines in operations for airports and airlines. Airlines faced high financial pressure, leading to workforce reductions, fleet retirements and a reliance on government bailouts.
+
+What sets COVID-19 apart from previous crises, such as the 2003 SARS outbreak or the 2008 financial crisis, is the pandemic's global scale and extended duration. Earlier events typically resulted in local or temporary disruptions, while COVID-19 brought an exceptional stop to international travel. This created unique challenges for the aviation industry, which heavily depends on cross-border movement.
+
+This thesis investigates the impact of COVID-19 on air passenger numbers in the European Union, focusing on four key countries: Spain, Germany, France and Italy. These account for a significant share of EU passenger traffic. Using descriptive and regression analyses, this research explores the role of travel restrictions and COVID-19 case numbers in influencing air passenger numbers. It provides insights into the immediate impacts of the pandemic and the recovery of the aviation industry.
+
+\chapter{Literature Review}
+\section{Aviation Industry Growth and Pre-COVID-19 Outlook}
+
+The remarkable growth of the aviation industry in the last decades was driven by increased demand and a strong growing economy. \gls{rpk} grew from 109 billion in 1960 to 8,269 billion in 2018 \footcite[2]{LEE2021}, with an average annual growth rate of about 7.75\%.  The industry’s economic impact has been substantial, contributing \$2.7 trillion and supporting over 65 million jobs globally, amounting to 3.6\% of global GDP in 2019 \footcite[3]{iata2019}. 
+
+Forecasts for the future expected continued growth. Boeing anticipated a 4.2\% global increase in passenger numbers per year with a rise of 5.0\% in \gls{rpk} from 2014 to 2033 \footcite[3]{boeing2014}. Similarly, Airbus projected a 4.5\% annual increase in growth from 2016 to 2035, doubling both the current passenger fleet and overall traffic \footcite[10]{airbus2016}. This growth was further expected to outperform GDP growth \footcite[37]{airbus2019}. In Europe, \gls{rpk} was projected to grow from 1,934 billion in 2018 to 5,727 billion by 2050, with air transport demand increasing at an annual rate of 3.45\%, despite a slight decline in Europe's global market share \footcite[5]{gossling2020a}.
+
+The share of seats offered by \gls{lcs} in Europe grew from 40\% to 55\% from 1998 to 2018, transforming the traditional aviation market. This was achieved by using cost-effective models, such as the use of secondary airports and a single aircraft type. This expansion resulted in increased route offerings, growing from 1,600 (1998) to 5,500 (2018) routes worldwide \footcite[75]{airbus2019}.
+
+\section{Impact of Past Crises on the Aviation Industry}
+
+The aviation industry has shown resilience, with an average growth rate of 5\% per year, despite facing repeated crises over the past 30 years. The challenges were recessions, oil price fluctuations, pandemics, wars and security threats, but these impacts were often temporary \footcite[6]{ADDEPALLI2018}. However, the extent of disruptions varied, depending on the nature of the crisis.
+
+From 1998 to 2003, global air traffic increased twofold despite crises such as the Gulf War, the Asian financial crisis, and the 2003 SARS outbreak \footcite[11]{airbus2019}, which led to a 35\% drop in monthly \gls{rpk} for Asia-Pacific airlines. Recovery took around nine months \footcite{IATA2020a}. Similarly, the Avian Flu in 2005 and 2013 only had a minor impact on air traffic \footcite[3]{IACUS2020}. The 2015 MERS outbreak caused a 12\% decline in \gls{rpk} for South Korean airlines, yet recovery to pre-crisis levels was achieved within only six months\footcite[6]{ADDEPALLI2018}. Demand often rebounded quickly, especially for travel like family visits and vacations \footcite[14]{boeing2014}.
+
+In contrast, other sources argue that the aviation sector was sensitive to economic downturns, political instability and pandemics \footcite{sadi2000, chung2015, dube2021b}. They indicate that past events like the 1973 oil crisis and the 9/11 attacks exposed the sector's vulnerability to disruptions. 9/11 led to an \gls{rpk} decrease of 31\% \footcite{Ito2005} and took three years to recover to pre-crisis levels \footcite{notis2012}. Government intervention has often been necessary to sustain airlines, especially post-9/11 \footcite{bailey2002, vig2004} The U.S. aviation sector required financial support to continue operations and the 2007-2009 financial crisis led to a \$5.5 billion loss for the global aviation industry \footcite{voltes2012}. Concerns have been raised about how the aviation industry is prepared for recurring disease outbreaks \footcite{hall2011}.
+
+\newpage
+
+\section{The Impact of COVID-19 on the Aviation Sector}
+
+The COVID-19 pandemic impacted the aviation sector severely and played a crucial role in spreading the disease \footcite{sun2020}. Data from Flightradar24 and Eurostat recorded the decrease in daily global flights from over 100,000 down to just 24,000 in April 2020. Flight numbers only recovered to 80,000 by the end of the year. This was far from pre-pandemic levels due to recurring virus variants and restrictions \footcite[2]{dube2021b}.
+
+In March 2020, 98\% of global passenger revenue faced significant restrictions such as quarantine and border closures. Europe became the epicenter of the pandemic in early March 2020 and operations had plummeted to less than 20\% of 2019 levels by the end of March. The initial expectation for a quick “V” shape recovery, similar to that of the SARS outbreak in 2003, was too optimistic \footcite[4]{dube2021b}, as passenger traffic decreased by 40\% and \gls{rpk} declined by 48\% for the year 2020. Seat offerings in the first half of 2020 was reduced by 50\%. Restrictions affected international flights more than domestic ones due to different national restrictions \footcite[4]{suau2020}. In the early days of the pandemic, airlines were operating nearly empty flights, often referred to as “ghost flights”. Under the EU’s "use-it-or-lose-it" rule, airlines had to use at least 80\% of their slots to keep them for future seasons. This was designed to promote fair competition and prevent airlines from hoarding slots, but with demand collapsing it created a major problem. To ease the burden on airlines and address environmental concerns, the EU eventually suspended the rule \footcite{niestadt2020}. 
+
+The estimated loss of 88\% in revenue in April 2020, which only recovered to 20\% in June, led to 4.5 \euro~billion losses across Europe. The global market value of airlines fell by nearly 49\% in May 2020. By June 15th, domestic flights began resuming, and on July 1st, the EU opened air traffic to 15 countries. These temporary traffic improvements helped to reduce the industry’s cash burn. In November however, the recovery was interrupted due to a surge of infections and reinstated travel restrictions. On the other hand, vaccine developments and implemented safety protocols slightly improved airline share prices \footcite[3-6]{dube2021b}.
+
+These effects are estimated to cause up to 30 million job losses globally in 2020, since the aviation sector contributes 4.1\% to GDP \footcite[6]{IACUS2020}. These challenges have called for cost-cutting measures. European airlines reduced costs by reducing non-essential staff and retiring older aircraft models earlier than planned, especially Lufthansa and British Airways. Other strategic adjustments include converting passenger planes to cargo use, rescheduling debt, and postponing projects to offset the financial loss \footcite[6-8,10]{dube2021b}.
+
+The airlines in Europe faced high financial pressure, requiring industry-wide support from governments. This included relief packages worth \$123 billion globally, even though this only accounted for a fraction of the 2019 revenue in Europe. This led to many airlines still facing high cash burn, highlighting the industry's fragile economic position in post-pandemic recovery. The airlines Alitalia, Flybe, German Airways, and Germanwings restructured, went bankrupt, or shut down between March and October 2020 due to COVID-19 \footcite[8,10]{dube2021b}.
+
+To strengthen passenger confidence and customer safety, airlines introduced health measures, despite these raising costs in an already fragile economic sector. Ten strategies have been implemented by 25 airlines to enhance comfort, health and safety, such as sanitation, HEPA air filtration, and contactless check-ins. Additionally, Airports which are designed for social interaction, had to ensure social distancing to reduce the risk of transmission. Rapid testing is a crucial step in reducing infections, however it does not provide 100\% certainty \footcite[9]{dube2021b}. The implementation of social distancing further decreased capacity, leading to cabin load factors below 50\% \footcite{suau2020}. Forecasts for recovery ranged from a partial recovery of just 60\% to a full recovery within 12 months \footcite[3]{IACUS2020}.
+
+
+\section{COVID-19 Recovery Trends in the Aviation Sector}
+
+In 2021 the aviation sector was still heavily affected by the pandemic, flight bans were still in place and demand was fluctuating, although global vaccine rollouts began \footcite[136]{sun2023}.
+
+The global aviation sector’s recovery in 2022 showed mixed results, as passenger numbers were still lagging 15\% behind 2019 levels, even though revenues returned to pre-pandemic figures. An analysis of 7,996 cities worldwide revealed most had not regained pre-pandemic departure levels, with smaller secondary cities recovering faster than larger and capital cities. This shift reflects a trend toward domestic markets and regional hubs, driven by reduced demand for international and business travel. Connectivity trends were more positive, with cities in Europe, North America, and the Middle East largely recovering their direct flight networks, while Asian cities lagged. Cities with fewer airports performed better as airlines increasingly prioritized direct routes between secondary cities over reliance on major hubs. Although capital cities experienced slower recovery, they remained vital in global networks, gaining new connections with secondary cities, highlighting a structural shift in air travel patterns post-pandemic \footcite[137-147]{sun2023}.
+
+Post-COVID-19, the aviation sector experienced uneven recovery across airlines regions, which was influenced by national restrictions. \gls{fsncs} relying on international markets faced slower recoveries, as these routes were the last to resume. In response, \gls{fsncs} adjusted their fleet, reducing the use of wide-body aircraft and prioritizing narrow-body planes to recover long-haul flights. In the recovery phase, regional airlines will see increased demand as hub feeders, while \gls{lcs} shift their focus to larger hub airports with reduced flight frequency rather than smaller markets \footcite[3-5]{suau2020}.
+
+Airbus’ Global Market Forecast from 2021 projects a full recovery of air traffic between 2023 and 2025, with an average passenger traffic growth of 3,6\% annually from 2019 to 2041. Traffic should reconnect to pre-crisis levels within a two-year shift \footcite[2-4]{airbus2021}. By May 2023, domestic capacity had surpassed 2019 levels globally (108\%) and in Europe (101\%), though international capacity lagged slightly behind at 89\% globally and 90\% in Europe \footcite[18]{airbus2023}. Despite the pandemic, Airbus notes the aviation sector’s ability to recover from global crises, with long-term growth forecasts remaining on track and the exceptional growth of 2010–2019 even exceeding earlier predictions \footcite[2-3]{airbus2024}.
+
+The recovery of business travel, a key revenue driver for \gls{fsncs}, has been the slowest to recover, due to the uneven lifting of travel restrictions. Demand for Meetings, Incentives, Conferencing and Exhibitions (MICE) travel is expected to face a long recovery time due to canceled events, reduced budgets, and slower economic activity \footcite[4-5]{suau2020}. Another challenge is the widespread digital transformation, reshaping work-life balance and reducing face-to-face interactions \footcite{schwarzmuller2018}. Companies have made significant investments in the new digital workspace, which shifted communication to videoconferencing. This decreases the need for executive travel, especially for internal meetings where established relationships reduce the need for in-person interaction \footcite{denstadli2013}. Even a small reduction in business travel, such as 5–10\%, could significantly impact the revenue of airlines \footcite{denstadli2013}. In 2004 videoconferencing was not considered a threat to the airline industry \footcite{denstadli2004}, however its growing role in complementing traditional business travel raises concerns about the long-term future of business travel \footcite[5]{suau2020}.
+
+Leisure side travel recovery projections are stronger, with local government support and tourism marketing. Economic constraints and health concerns have a more significant impact on leisure travel than on business travel, which is often necessary. These factors further influence consumer decisions, potentially reducing trip frequency \footcite[5]{suau2020}. Due to higher price sensitivity of leisure travelers, demand is expected to shift from traditional southern Europe destinations to more affordable locations, such as North Africa and the Eastern Mediterranean \footcite{morlotti2017}. Global recovery has been uneven, with domestic traffic rebounding quicker in Europe and North America \footcite[144-147]{sun2023}.
+
+
+\chapter{Settings, Data and Methodology}
+
+\paragraph{Settings \& Data}
+\
+
+This study examines the impact of COVID-19 on air travel in the European Union (EU) by analyzing three distinct periods: the pre-pandemic stage (2012–2019), the pandemic period (2020–2022) and the post-pandemic recovery phase (2023 onwards). The primary focus is on Spain, Germany, France, and Italy, which collectively account for approximately 62\% of passenger traffic within the EU during this timeframe (see Table~\ref{tab:passenger_tourist_summary_top4_eu}). The aim is to analyze how COVID-19 affected passenger numbers and identify trends in the recovery process across different markets.
+
+\begin{table}[H]
+\centering
+\caption{Air Passenger and Tourist Numbers for Selected Countries and EU Total (2012-2023)}
+\begin{tabular}{l|rr|rr}
+\toprule
+\multirow{2}{*}{\textbf{Country}} & \multicolumn{2}{c|}{\textbf{Combined Passengers}} & \multicolumn{2}{c}{\textbf{Arriving Tourists}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+ & \textbf{(Billions)} & \textbf{\% of EU Total} & \textbf{(Millions)} & \textbf{\% of EU Total} \\
+\midrule
+Spain   & 2.499 & 18.18\% & 639 & 16.95\% \\
+\cmidrule(lr){1-5}
+Germany & 2.290 & 16.66\% & 367 & 9.74\% \\
+\cmidrule(lr){1-5}
+France  & 1.896 & 13.79\% & 515 & 13.64\% \\
+\cmidrule(lr){1-5}
+Italy   & 1.807 & 13.15\% & 618 & 16.37\% \\
+\midrule
+Top 4 Total & 8.492 & 61.78\% & 2,139 & 56.70\% \\
+\cmidrule(lr){1-5}
+EU-27 Total & 13.747 & 100.00\% & 3,773 & 100.00\% \\
+\bottomrule
+\end{tabular}
+\label{tab:passenger_tourist_summary_top4_eu}
+\end{table}
+
+Combined passenger numbers and tourist numbers used in this study are sourced from Eurostat \footcite{eurostat, eurostat_tourist}, the statistical office of the European Union. Combined passenger numbers refer to both arriving and departing passengers. To create a baseline for pre-pandemic conditions, the relative change in passengers compared to 2019 is used (Equation~\ref{eq:relative_change}), which adjusts for seasonal variations and allows for direct comparisons across countries. $\text{Passengers}_{it}$ represents the total number of passengers for country $i$ in month $t$.
+\begin{equation}
+\text{Relative Change}_{it} (\%) = \frac{\text{Passengers}_{it} - \text{Passengers}_{i,2019}}{\text{Passengers}_{i,2019}} \times 100 \label{eq:relative_change}
+\end{equation}
+
+International Travel Controls (\gls{itc}) used in this study measures the extent of travel restrictions imposed in response to the pandemic. \gls{itc} levels range from 0, which signifies no restrictions, to 4, indicating a complete border closure. \gls{itc} level 1 represents screening of arrivals, level 2 requires quarantine for arrivals from some or all regions, and level 3 involves bans on arrivals from certain regions. \gls{itc} data, sourced from the Oxford COVID-19 Government Response Tracker (OxCGRT) \footcite{itc}, is averaged over the month to provide a consistent measure throughout the study period and to match with the monthly passenger data. This variable is crucial to understand how restrictions influenced passenger volumes.
+
+COVID-19 case data is sourced from the World Health Organization \footcite{who}. New COVID-19 cases per 100,000 inhabitants were used, enabling cross-country comparisons while accounting for population differences.
+
+The EU-27 includes all member states as of 01.02.2020, with the United Kingdom excluded from the analysis due to incomplete data availability following Brexit.
+
+\paragraph{Descriptive Analysis}
+\
+
+The pre-pandemic analysis (Section~\ref{sec:pre_pandemic}) displays the growth of air passenger numbers across the EU from 2012 to 2019, focusing on the selected countries (Spain, Germany, France, and Italy). It includes a comparison of the share of passenger numbers.
+
+The pandemic impact analysis (Section~\ref{sec:pandemic_impact}) presents a timeline of key events and records the highest monthly drop in passenger numbers. Plots are displayed to visualize the relationship between COVID-19 case trends, different levels of \gls{itc} and relative changes in passenger volumes compared to pre-pandemic levels.
+
+The post-pandemic analysis (Section~\ref{sec:post_pandemic}) shows the recovery phase (2023 onwards), displaying the largest increases in passenger numbers and annual changes observed. Recovery trends across the selected countries and the EU are analyzed.
+
+\paragraph{Regression Analysis}
+\
+
+The regression analysis (Section~\ref{sec:regression analysis}) investigates the effects of COVID-19 cases per 100k and \gls{itc} on air passenger numbers relative to their pre-pandemic levels. The analysis covers the period from January 2020 to December 2022, including the pandemic years and capturing the full range of variations in case numbers and ITC restrictions. 
+
+The dependent variable is the relative change in passenger numbers compared to 2019, providing a comparable measure of passenger volume changes across countries. 
+
+The independent variables include COVID-19 cases per 100k and international travel controls, represented as categorical dummy variables. Dummy variables are created for each ITC level ($ITC_0$, $ITC_1$, $ITC_2$, $ITC_3$, $ITC_4$), based on the rounded value of the \gls{itc} level. For instance, if \gls{itc} is 2.3, $ITC_2$ is set to 1, while the rest ($ITC_0$, $ITC_1$, $ITC_3$, $ITC_4$) are set to zero. 
+Three models are applied to evaluate the effects of these variables. Model 1 (Equation~\ref{eq:model1}) examines the relationship between COVID-19 cases per 100k and passenger volumes, assessing the direct impact of case numbers on air passenger numbers:
+\begin{equation}
+\begin{aligned}
+\text{Relative Change in Passengers}_{it} &= \beta_0 + \beta_1 \cdot \text{New Cases per 100k}_{it} + \epsilon_{it}
+\end{aligned}
+\label{eq:model1}
+\end{equation}
+
+Model 2 (Equation~\ref{eq:model2}) isolates the effect of \gls{itc} levels by including only the \gls{itc} dummies ($ITC_1$  to  $ITC_4$) as explanatory variables. This allows for the evaluation of how different levels of travel restrictions affect passenger volumes.  $ITC_0$, representing no restrictions, is set as the baseline category and excluded from the regression to avoid perfect multicollinearity, ensuring that the coefficients for $ITC_1$ to $ITC_4$ are interpreted relative to this baseline.
+\begin{equation}
+\begin{aligned}
+\text{Relative Change in Passengers}_{it} &= \beta_0 + \beta_1 \cdot \text{ITC}_1 + \beta_2 \cdot \text{ITC}_2 \\
+&\quad + \beta_3 \cdot \text{ITC}_3 + \beta_4 \cdot \text{ITC}_4 + \epsilon_{it}
+\end{aligned}
+\label{eq:model2}
+\end{equation}
+
+Model 3 (Equation~\ref{eq:model3}) incorporates both COVID-19 cases per 100k and ITC dummies to examine their combined impact on air passenger volumes. As in Model 2,  $ITC_0$  is set as the baseline category and excluded from the regression to avoid perfect multicollinearity, ensuring that the coefficients for $ITC_1$ to $ITC_4$ reflect their effects relative to no restrictions.
+\begin{equation}
+\begin{aligned}
+\text{Relative Change in Passengers}_{it} &= \beta_0 + \beta_1 \cdot \text{New Cases per 100k}_{it} \\
+&\quad + \beta_2 \cdot \text{ITC}_1 + \beta_3 \cdot \text{ITC}_2 \\
+&\quad + \beta_4 \cdot \text{ITC}_3 + \beta_5 \cdot \text{ITC}_4 + \epsilon_{it}
+\end{aligned}
+\label{eq:model3}
+\end{equation}	
+
+For the selected countries linear regression models are used separately to estimate the coefficients. For the EU-wide analysis a fixed-effects within model is applied to account for unobserved heterogeneity across member states and provide a more generalizable understanding of passenger volume changes across the EU-27. This allows for a detailed comparison of how COVID-19 cases and \gls{itc} restrictions influenced passenger volumes within the selected countries and across the EU.
+\\
+
+The discussion section interprets the results from the empirical analysis and compares them to findings from the research.
+
+
+
+\chapter{Empirical Analysis}
+\section{Descriptive Analysis}
+\label{sec:descriptive_analysis}
+
+\subsection{Pre-Pandemic Analysis}
+\label{sec:pre_pandemic}
+
+The aviation industry in the European Union (EU) experienced consistent growth in passenger numbers in the years prior to the COVID-19 pandemic. Table~\ref{tab:eu_numbers} provides an overview of the annual combined passenger numbers and \gls{yoy} growth rates from 2012 to 2019. The average \gls{yoy} shows strong growth, with an average of 5.01\%. This reflects a period of strong demand for air travel across the EU.
+
+\begin{table}[H]
+\centering
+\caption{Annual Combined Air Passenger Numbers (Millions) for EU-27 (2012-2029) with Year-over-Year Growth Rate}
+\label{tab:eu_numbers}
+\begin{tabular}{r|r|r}
+\toprule
+\textbf{Year} & \textbf{Air Passengers (Millions)} & \textbf{YoY Growth Rate (\%)} \\
+\midrule
+2012 & 1,074 & -- \\
+\cmidrule(lr){1-3}
+2013 & 1,082 & 0.70 \\
+\cmidrule(lr){1-3}
+2014 & 1,132 & 4.67 \\
+\cmidrule(lr){1-3}
+2015 & 1,192 & 5.32 \\
+\cmidrule(lr){1-3}
+2016 & 1,273 & 6.74 \\
+\cmidrule(lr){1-3}
+2017 & 1,375 & 7.99 \\
+\cmidrule(lr){1-3}
+2018 & 1,457 & 6.00 \\
+\cmidrule(lr){1-3}
+2019 & 1,510 & 3.66 \\
+\bottomrule
+\end{tabular}
+\center \small \textbf{Average Growth Rate (2013-2019):} 5.01\%
+\end{table}
+
+Among the selected countries, Spain demonstrated the highest average annual \gls{yoy} growth rate in passenger numbers at 5.04\%. Between 2012 and 2023, Spain accounted for 18.18\% of total EU-27 passenger volumes, the largest share among the analyzed countries (Table~\ref{tab:passenger_tourist_summary_top4_eu}). Italy followed with a \gls{yoy} growth rate of 4.08\% and a passenger share of 13.15\%. France and Germany had slightly lower growth rates of 3.51\% and 3.09\%, but held significant shares of EU passenger traffic, with France contributing 13.79\% and Germany 16.66\%. Spain and Italy accounted for 16.95\% and 16.37\% of total EU-27 tourist arrivals. Germany and France, with 9.74\% and 13.64\% of tourist shares, relied more on business-related travel.
+
+Figure~\ref{fig:pre_selected_countries} illustrates the consistent growth of passenger numbers for the selected countries prior to the pandemic. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Air Passenger Numbers in Selected Countries (2012-2019)}
+    \label{fig:pre_selected_countries}
+	\includegraphics[height=100mm]{Plots/Pre/Yearly8}
+\end{figure}
+
+The consistent growth in passenger numbers in the EU highlights the resilience of the aviation sector during this period. These pre-pandemic trends establish a key baseline for understanding the unprecedented disruptions caused by COVID-19, which will be analyzed in the following section.
+
+
+
+\newpage
+
+\subsection{Pandemic Impact Analysis}
+\label{sec:pandemic_impact}
+
+With the outbreak of the COVID-19 pandemic in late 2019 in China and early 2020 in the rest of the world, the aviation industry came to a standstill. The analysis in this section focuses on the timeline of key events, the decline of passenger numbers and how different levels of restrictions impacted recovery patterns.
+
+
+\begin{table}[H]
+\centering
+\caption{Timeline of Key Events During the COVID-19 Pandemic in the EU (2020-2023)}
+\begin{tabular}{@{}p{3cm}p{10cm}@{}}
+\toprule
+\textbf{Date}       & \textbf{Event} \\ 
+\midrule
+January 2020        & EU countries start implementing International Travel Controls (\gls{itc}) \\ 
+\cmidrule(lr){1-2}
+April 2020          & \gls{itc} reach their highest level, Passenger Traffic falls to its lowest point\\           
+\cmidrule(lr){1-2}
+December 2021 –
+February 2022       & Highest COVID-19 Cases Recorded (Omicron Wave) \\                     
+\cmidrule(lr){1-2}
+November 2022       & \gls{itc} fully lifted across most EU countries. \\ 
+\cmidrule(lr){1-2}
+October 2023        & First Big Recovery of Passengers: Passenger traffic surpasses 100\% of pre-2019 levels for the first time \\ 
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+In April 2020, at the peak of the first wave, \gls{itc} reached their strictest level (level 4 in Germany and Spain, level 3 in France and Italy) resulting in the sharp decline in passenger numbers, as shown in Table~\ref{tab:highest_drop}. 
+
+
+\begin{table}[H]
+\centering
+\caption{Highest Monthly Decline in Air Passenger Volume Relative to the Corresponding Month in 2019 for Selected Countries and Weighted EU Average}
+\begin{tabular}{llr}
+\toprule
+\textbf{Country} & \textbf{Month} & \textbf{Change compared to 2019 (\%)} \\
+\midrule
+Spain   & April 2020 & - 99,47 \\
+\cmidrule(lr){1-3}
+Germany & April 2020 & - 98,62 \\
+\cmidrule(lr){1-3}
+France  & April 2020 & - 99,01 \\
+\cmidrule(lr){1-3}
+Italy   & April 2020 & - 99,28 \\
+\cmidrule(lr){1-3}
+Weighted EU-27 Average & April 2020 & - 98,73 \\
+\bottomrule
+\end{tabular}
+\label{tab:highest_drop}
+\end{table}
+
+
+\newpage
+
+
+
+The plots in figure~\ref{fig:4Countries} display the relationship between passenger numbers, COVID-19 cases and \gls{itc} across Spain, Germany, France, and Italy. The red line represents COVID-19 cases per 100k inhabitants, the blue line shows the relative change in passenger volumes compared to the same month in 2019, and the shaded bars indicate the level of \gls{itc} in place.
+
+
+\begin{figure}[H]
+    \centering
+    \caption{Impact of COVID-19 on Air Passengers in Selected Countries (2020-2024)}
+    \label{fig:4Countries}
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/During/SpainNew1}
+        \caption{Spain}
+        \label{fig:Spain}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/During/GermanyNew1}
+        \caption{Germany}
+        \label{fig:Germany}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/During/FranceNew1}
+        \caption{France}
+        \label{fig:France}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.49\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Plots/During/ItalyNew1}
+        \caption{Italy}
+        \label{fig:Italy}
+    \end{subfigure}
+\end{figure}
+
+
+\setlength{\fboxsep}{0pt}
+\setlength{\fboxrule}{0.5pt}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{c l}
+\fbox{\textcolor{blueColor}{\rule{1em}{1em}}} & Relative Change in Passengers compared to 2019 (\%) \\[5pt]
+\fbox{\textcolor{redColor}{\rule{1em}{1em}}} & COVID-19 Cases per 100k \\[5pt]
+\fbox{\textcolor{brown0}{\rule{1em}{1em}}} & No restrictions (0) \\[5pt]
+\fbox{\textcolor{brown1}{\rule{1em}{1em}}} & Screening arrivals (1) \\[5pt]
+\fbox{\textcolor{brown2}{\rule{1em}{1em}}} & Quarantine arrivals from some or all regions (2) \\[5pt]
+\fbox{\textcolor{brown3}{\rule{1em}{1em}}} & Ban arrivals from some regions (3) \\[5pt]
+\fbox{\textcolor{brown4}{\rule{1em}{1em}}} & Ban on all regions or total border closure (4) \\[5pt]
+\end{tabular}
+\end{figure}
+
+
+\newpage
+\paragraph{Spain (Figure~\ref{fig:Spain})}
+\
+
+After initially implementing \gls{itc} of level 4 in April 2020, Spain's passenger numbers dropped dramatically by 99.5\%. As restrictions eased to level 3 by summer 2020, a modest recovery was possible with passenger numbers reaching around 25\% of 2019 levels. This occured with a rise in COVID-19 cases, peaking at over 335 per 100k in August 2020, delaying recovery. In the winter of 2020, cases surged to over 1,000 per 100k and passenger numbers remained over 80\% below 2019 levels. As restrictions eased in the summer of 2021 passenger numbers rose to 50\% of pre-pandemic levels, yet in July COVID-19 cases per 100k were climbing at over 1,200. Passenger numbers continued to rise in the end of 2021, reaching 75\% of 2019 levels. The Omicron wave caused a setback, with COVID-19 cases peaking at almost 8,000 per 100k in January 2022, dropping passenger numbers to 40\% below 2019. Recovery accelerated as cases steadily declined throughout 2022 with restrictions lowered to level 1. By the summer of 2022 passenger numbers reached approximately 94\% of pre-pandemic passengers, with July and August showing the strongest rebounds. COVID-19 cases remained low in this period, supporting the recovery. 2022 ended with passenger numbers returning to pre-pandemic levels.
+
+\paragraph{Germany (Figure~\ref{fig:Germany})}
+\
+
+After Germany implemented strict \gls{itc} level 4 restrictions in April 2020 passenger numbers significantly declined to less than 1\% of 2019 levels. As restrictions were relaxed to level 3 in May 2020, passenger numbers slightly recovered to 20\% of pre-pandemic numbers by the summer of 2020. A rise in COVID-19 cases, peaking at 195 per 100k in October 2020 slowed further growth. Passenger numbers remained over 80\% below 2019 figures through the winter. In the summer of 2021 passenger volume reached 40\% of pre-pandemic level in July. In September 2021 restrictions were lowered to 1 and passenger numbers rose to around 50\% by October. This occured despite rising COVID-19 cases in autumn, rising to over 1,660 per 100k in December 2021. A temporary setback to 60\% below the 2019 benchmark was caused by the Omicron wave in early 2022, with cases peaking at over 7,190 per 100k in March 2022. Temporary \gls{itc} restrictions of 2 were set in place during late 2021 and early 2022. With cases dropping, restrictions were lowered again to 1. Passenger traffic accelerated, reaching 75\% of pre-pandemic values, however case numbers were still fluctuating.
+
+\newpage
+
+\paragraph{France (Figure~\ref{fig:France})}
+\
+
+France initially restricted international travel with \gls{itc} of level 3 in April 2020, causing passenger numbers to plummet by 99\% compared to 2019. Restrictions remained at 3 through 2020, as passenger numbers fluctuated slightly during the summer, but were still over 70\% below pre-pandemic values. COVID-19 cases rose quickly to around 1,500 per 100k in November 2020, slowing down recovery. In 2021 restrictions were lowered, with \gls{itc} dropping to level 2 by mid-year and to level 1 by August. Passenger numbers significantly improved during the summer, reaching nearly 40\%. However as COVID-19 cases surged during the Omicron wave, reaching over 12,400 in January 2022, passenger numbers dropped to 50\% below 2019 levels. Cases fluctuated but declined until the end of 2022, recovery to 90\% of pre-pandemic figures was possible.
+
+\paragraph{Italy (Figure~\ref{fig:Italy})}
+\
+
+Italy implemented \gls{itc} restrictions of stage 3 as early as February 2020. These restrictions caused passenger numbers to collapse to less than 1\% of pre-pandemic values by April 2020. Some recovery could be seen during the summer of 2020, with passenger numbers reaching 60\% of 2019 figures by August 2020. Rising COVID-19 cases in late 2020 at over 1,500 per 100k dropped passenger numbers 90\% below 2019 metrics. In 2021 restrictions were eased to level 2 by mid-year. This allowed passenger numbers to recover more substantially, reaching nearly 70\% by August 2021. The Omicron wave in winter 2021 and early 2022 caused a significant setback, with COVID-19 cases peaking at over 7,500 per 100k in January. Passenger numbers fell to nearly 50\% below pre-pandemic values. As \gls{itc} restrictions eased to 1 by March 2022, recovery showed progress. By August 2022 passenger numbers reached approximately 94\% of 2019 figures, while cases were surpassing 4,000 per 100k and \gls{itc} restrictions were removed.
+\\
+
+
+The plots illustrate the declines in passenger volumes during the initial lockdowns and strict \gls{itc} measures. This was followed by partial recoveries as restrictions began to ease. Spain and Italy experienced stronger rebounds, with passenger volumes nearing pre-pandemic levels by 2022, while Germany and France showed slower recoveries. Periods of recovery were often disrupted, reflecting the fluctuating impact of the pandemic on air passenger numbers.
+
+
+\begin{figure}[H]
+    \centering
+    \caption{Percentage Drop in Annual Air Passengers During the Pandemic (2020-2022)}
+    \label{fig:tourist_passenger_drop}
+	\includegraphics[height=100mm]{Plots/During/Annual_Drop10.pdf}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{c l}
+\fbox{\textcolor{blueColor}{\rule{1em}{1em}}} & Relative Change in Passengers compared to 2019 (\%) \\[5pt]
+\end{tabular}
+\end{figure}
+
+The plot in Figure~\ref{fig:tourist_passenger_drop} depicts the annual percentage change in passenger numbers relative to 2019 for the selected countries. In 2020, numbers dropped abruptly across the selected countries, with an average of 75\%. In 2021, passenger volumes in Spain, France, and Italy recovered to approximately 55\% below 2019 levels, while Germany lagged further behind at 70\% below. By 2022 Spain and Italy showed stronger rebounds, with passenger volumes reaching 7\% and 15\% below 2019 levels, respectively. France followed at 20\% below, while Germany remained the furthest behind, with passenger volumes still 35\% below pre-pandemic levels. The weighted EU-27 average followed a similar pattern, confirming that the selected countries capture broader regional trends, while revealing some variation.
+
+\newpage
+
+
+\subsection{Post-Pandemic Analysis}
+\label{sec:post_pandemic}
+
+The post-pandemic recovery (2023 onwards) of air passenger numbers across the EU shows significant variation. By 2023, many EU countries saw a strong rebound in air traffic, with several surpassing pre-pandemic passenger numbers. 
+
+Table~\ref{tab:first_above_100} shows the first month when air passenger levels exceeded pre-pandemic levels for Spain, France, Italy and the EU-27 weighted average. Germany is not listed, as it did not reach 2019 figures. 
+
+\begin{table}[H]
+\centering
+\caption{First Month of Air Passenger Numbers above Pre-Pandemic Levels}
+\label{tab:first_above_100}
+\begin{tabular}{llr}
+\toprule
+\textbf{Country} & \textbf{Month} & \textbf{Change compared to 2019 (\%)} \\
+\midrule
+Spain                  & January 2023   & + 3.07 \\
+\cmidrule(lr){1-3}
+France                 & May 2024       & + 2.09 \\
+\cmidrule(lr){1-3}
+Italy                  & April 2023     & + 2.57 \\
+\cmidrule(lr){1-3}
+Weighted EU-27 Average & October 2023   & + 1.15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+Spain recorded the highest growth among the analyzed countries, with passenger volumes exceeding 2019 levels by nearly 20\% as early as February 2024 (Table~\ref{tab:highest_rebound}). Italy similarly experienced strong growth, with passenger volumes surpassing 2019 figures by almost 18\% in May 2024.
+
+\begin{table}[H]
+\centering
+\caption{Largest Monthly Increase in Air Passenger Numbers Relative to 2019}
+\begin{tabular}{llr}
+\toprule
+\textbf{Country} & \textbf{Month} & \textbf{Change compared to 2019 (\%)} \\
+\midrule
+Spain   & February 2024 & + 19.75 \\
+\cmidrule(lr){1-3}
+Germany & May 2024 & - 11.81 \\
+\cmidrule(lr){1-3}
+France  & May 2024 & + 2.09 \\
+\cmidrule(lr){1-3}
+Italy   & May 2024 & + 17.71 \\
+\cmidrule(lr){1-3}
+Weighted EU-27 Average & May 2024 & + 6.05 \\
+\bottomrule
+\end{tabular}
+\label{tab:highest_rebound}
+\end{table}
+
+In contrast, Germany and France saw slower recoveries. Germany's passenger numbers remained almost 12\% below 2019 levels in May 2024 compared to May 2019. France showed slight improvements, exceeding pre-pandemic levels by about 2\%. The EU-27 weighted average recovery was 6\% above 2019 levels by May 2024.
+
+\begin{figure}[H]
+    \centering
+    \caption{Recovery in Air Passengers (2023 compared to 2019)}
+    \label{fig:passenger_recovery}
+	\includegraphics[height=100mm]{Plots/Post/Recovery4.pdf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tabular}{c l}
+\fbox{\textcolor{blueColor}{\rule{1em}{1em}}} & Relative Change in Passengers compared to 2019 (\%) \\[5pt]
+\end{tabular}
+\end{figure}
+
+The chart in Figure~\ref{fig:passenger_recovery} illustrates the recovery in 2023, with Spain and Italy achieving 104\% and 102\% of 2019 passenger volumes, respectively. In contrast, France recovered to 93\% of 2019 levels, while Germany lagged behind at around 80\%. The EU-27 weighted average was at around 94\%.
+\\
+
+In summary, the post-pandemic recovery of air passenger numbers across the EU varied, with some countries experiencing faster rebounds, while others remained below pre-pandemic levels.
+
+
+\newpage
+
+\section{Regression Analysis}
+\label{sec:regression analysis}
+
+
+This chapter examines the relationship between COVID-19 cases, International Travel Restrictions (\gls{itc}), and the change in air passenger numbers during the pandemic. Using three regression models, the analysis examines how changes in passenger numbers were influenced by pandemic-related factors. The regression analysis is divided into two parts: a detailed analysis of the selected countries and a broader EU-wide analysis.  
+
+
+\subsection*{Regression Analysis for Selected Countries}
+
+This section focuses on the selected countries: Spain, Germany, France and Italy. This highlights how COVID-19 cases and restrictions influenced passenger volumes in different markets. The regression results for these models are summarized in Table~\ref{tab:regression_results_compact}.
+
+\paragraph{Model 1}
+\
+
+Model 1, which analyzes the impact of new COVID-19 cases per 100k on the relative change in passenger numbers, has weak explanatory power across all countries. The variation in passenger numbers is only minimally explained by the number of COVID-19 cases. For example, Germany shows a marginally significant p-value of 0.0583, yet the model only explains about 10\% of the variation in passenger numbers with an $R^2$ value of 0.1014. 
+
+The coefficients for new cases per 100k are positive but small across all countries. For instance, Germany's coefficient of 0.0052 suggests a minimal positive effect on passenger numbers, yet insufficient to explain substantial variation.
+
+The intercepts are statistically significant at the one percent level and negative across all countries. These are $-46.95$ in Spain to $-65.32$ in Germany, $-52.58$ in France and $-56.41$ in Italy. 
+
+\paragraph{Model 2}
+\
+
+Model 2 evaluates the impact of \gls{itc} dummies on the change in passenger numbers and demonstrates strong explanatory power across all analyzed countries. Unlike Model 1, this model establishes a significant relationship between ITC levels and changes in passenger volumes. For example, Germany has an $R^2$ value of 0.8956, indicating that approximately 89.6\% of the variation in passenger numbers can be explained by \gls{itc} dummies. Similarly, Spain, France, and Italy show high $R^2$ values of 0.9321, 0.8657, and 0.7988, respectively.
+
+Adjusted $R^2$, which accounts for the number of predictors in the model and adjusts for potential overfitting, further supports the model's strength. Germany achieves an adjusted $R^2$ of 0.8821, while Spain, France, and Italy show adjusted $R^2$ values of 0.9233, 0.8531, and 0.7799, respectively.
+
+The coefficients for ITC dummies are consistently negative and statistically significant at the one percent level, highlighting the impact of stricter \gls{itc} on passenger numbers. For Germany, the coefficient for $ITC_4$ is $-77.48$, in Spain, the coefficient for $ITC_4$ is $-98.70$. 
+
+France and Italy did not reach $ITC_4$ restrictions during the observed period, limiting their models to $ITC_1$, $ITC_2$ and $ITC_3$. In France, the coefficient for $ITC_3$ is $-71.64$, similarly to Italy where the coefficient for $ITC_3$ is $-72.05$.
+
+The intercepts in Model 2 show varying levels of significance across countries. Germany’s intercept of $-21.14$ is statistically significant at the one percent level, while the intercepts for Spain ($0.48$), France ($-8.89$), and Italy ($-6.56$) are not statistically significant.
+
+\paragraph{Model 3}
+\
+
+Model 3 includes both new COVID-19 cases per 100k and \gls{itc} dummies. This model demonstrates strong explanatory power across all analyzed countries. For example, Germany achieves an $R^2$ value of 0.9013, indicating that approximately 90.1\% of the variation in passenger numbers can be explained by the combined influence of ITC levels and COVID-19 cases. Similarly, Spain, France, and Italy show high $R^2$ values of 0.9526, 0.8663, and 0.8072, respectively, highlighting the robustness of the model. 
+
+Spain achieves an adjusted $R^2$ of 0.9447, while Germany, France, and Italy show adjusted $R^2$ values of 0.8848, 0.8491, and 0.7823, respectively.
+
+The coefficients for ITC dummies remain consistent with Model 2, negative, and statistically significant at the one percent level. For $ITC_4$ the coefficients were $-94.54$ and $-79.40$ for Spain \& Germany, $-71.37$ and $-74.83$ for France \& Italy.
+
+COVID-19 case numbers show varying results across countries. The coefficient for new cases per 100k in Spain is $-0.0041$, statistically significant at the five percent level. In Germany, France, and Italy, the coefficients for COVID-19 cases are not statistically significant.
+
+The intercepts in Model 3 remain consistent in size with those in Model 2. Germany’s intercept of $-19.02$ remains statistically significant at the one percent level. In contrast, the intercepts for Spain, France, and Italy ($0.84$, $-9.36$, and $-2.81$, respectively) are not statistically significant.
+
+\newpage
+
+\paragraph{Summary}
+\
+
+In summary, the regression analysis shows that \gls{itc} dummies explain a significant portion of the variation in passenger volumes across all countries. Model 1, which includes only COVID-19 case numbers, explains a minimal amount of the variation. Models 2 and 3 demonstrate stronger explanatory power with the inclusion of \gls{itc} dummies. Including COVID-19 case numbers in Model 3 shows a significant effect in Spain, while the coefficients for COVID-19 cases are not statistically significant in the other countries.
+
+
+
+\begin{table}[H]
+\centering
+\caption{Regression Results for Selected Countries}
+\label{tab:regression_results_compact}
+\begin{adjustbox}{width=\textwidth}
+\renewcommand{\arraystretch}{1.335}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Metric} & \textbf{Spain} & \textbf{Germany} & \textbf{France} & \textbf{Italy} \\
+\midrule
+\multicolumn{5}{l}{\textbf{\normalsize Model 1}} \\
+\multicolumn{5}{l}{\textbf{New Cases Only}} \\
+Intercept           & -46.95*** & -65.32*** & -52.58*** & -56.41*** \\
+New Cases per 100k  & 0.0011    & 0.0052.   & 0.0031    & 0.0065.   \\
+$R^2$               & 0.0018    & 0.1014    & 0.0599    & 0.0895    \\
+Adj. $R^2$          & -0.0275   & 0.0750    & 0.0323    & 0.0627    \\
+F-Statistic         & 0.062     & 3.838     & 2.169     & 3.343     \\
+p-value             & 0.805     & 0.0583    & 0.150     & 0.076     \\
+\midrule
+\multicolumn{5}{l}{\textbf{\normalsize Model 2}} \\
+\multicolumn{5}{l}{\textbf{ITC Dummies Only}} \\
+Intercept           & 0.48      & -21.14*** & -8.89.    & -6.56     \\
+$ITC_1$              & -14.45*   & -19.50*** & -16.68**  & -11.99    \\
+$ITC_2$              & -33.61*** & -35.26*** & -41.22*** & -32.42*** \\
+$ITC_3$              & -76.20*** & -63.60*** & -71.64*** & -72.05*** \\
+$ITC_4$              & -98.70*** & -77.48*** & N/A        & N/A        \\
+$R^2$               & 0.9321    & 0.8956    & 0.8657    & 0.7988    \\
+Adj. $R^2$          & 0.9233    & 0.8821    & 0.8531    & 0.7799    \\
+F-Statistic         & 106.4     & 66.47     & 68.77     & 42.34     \\
+p-value             & $~~~  2.2 \times 10^{-16}$ & $9.2 \times 10^{-15}$ & $4.8 \times 10^{-14}$ & $3.0 \times 10^{-11}$ \\
+\midrule
+\multicolumn{5}{l}{\textbf{\normalsize Model 3}} \\
+\multicolumn{5}{l}{\textbf{Both Cases and ITC}} \\
+Intercept           & 0.84      & -19.02*** & -9.36.    & -2.81     \\
+New Cases per 100k  & -0.0041** & -0.0015   & 0.0003    & -0.0023   \\
+$ITC_1$              & -8.33     & -17.40**  & -17.01*   & -9.60     \\
+$ITC_2$              & -31.16*** & -34.49*** & -41.76*** & -32.18*** \\
+$ITC_3$              & -73.98*** & -65.28*** & -71.37*** & -74.83*** \\
+$ITC_4$              & -98.54*** & -79.40*** & NA        & NA        \\
+$R^2$               & 0.9526    & 0.9013    & 0.8663    & 0.8072    \\
+Adj. $R^2$          & 0.9447    & 0.8848    & 0.8491    & 0.7823    \\
+F-Statistic         & 120.6     & 54.77     & 50.22     & 32.45     \\
+p-value             & $~~~ 2.2 \times 10^{-16}$ & $3.5 \times 10^{-14}$ & $4.1 \times 10^{-13}$ & $1.1 \times 10^{-10}$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\renewcommand{\arraystretch}{1} 
+\vspace{0.5em} 
+\newline
+\footnotesize \textit{Note:} $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01.
+\end{table}
+
+
+\subsection*{EU-wide Regression Analysis}
+
+
+The EU-wide analysis includes all EU-27 member states. This approach provides insights into the pandemic's effects across all countries within the European Union. The regression results for these models are summarized in Table~\ref{tab:regression_results_eu}.
+
+
+\paragraph{Model 1}
+\
+
+Model 1, which evaluates the impact of new COVID-19 casese per 100k on changes in passenger numbers across the EU has weak explanatory power. This is indicated by an $R^2$ value of $0.0179$, suggesting that only 1.79\% of the variation in the change in passenger numbers can be explained by new COVID-19 cases.
+
+The coefficient for new cases per 100k is positive and statistically significant at the one percent level with a value of $0.0023$, however insufficient to explain substantial variation. 
+
+The fixed-effects specification accounts for time-invariant factors specific to individual EU countries, such as travel behaviors or population size. This ensures the model solely focuses on within-country variation over time.
+
+\paragraph{Model 2}
+\
+
+Model 2 isolates the impact of \gls{itc} dummies on the change in passenger volumes. This model demonstrates a significant improvement in explanatory power compared to Model 1. An $R^2$ value of 0.7087 is achieved, indicating that 70.87\% of the variation in passenger volumes across the EU is explained by variations in \gls{itc} levels. Adjusted $R^2$ accounts for the inclusion of multiple predictors and adjusts for potential overfitting, is slightly lower at 0.6994, reflecting the model's strength in explaining variation while avoiding overfitting.
+
+The coefficients for \gls{itc} dummies are consistently negative and statistically significant at the one percent level. For instance, $ITC_1$, representing screening of arrivals has a coefficient of $-24.25$. Moving to $ITC_2$, involving quarantine requirements, results in a coefficient of $-51.60$. $ITC_3$, banning arrivals from some regions results in a factor of $-65.85$, while it is at $-81.68$ for $ITC_4$.
+
+\paragraph{Model 3}
+\
+
+Model 3 combines both new COVID-19 cases per 100k and \gls{itc} dummies to analyze their influence on passenger volumes across the EU. The model achieves an $R^2$ value of 0.7095, indicating that 70.95\% of the variation in passenger volumes is explained by the combined effects of \gls{itc} levels and COVID-19 case numbers. Adjusted $R^2$ is slightly lower at 0.6999, reflecting the model's robustness while accounting for potential overfitting. 
+
+The coefficients for \gls{itc} dummies remain negative, statistically significant at the one percent level and consistent with those in Model 2. For example, $ITC_4$ (complete border closures) corresponds to a coefficient of $-81.52$, nearly identical to the $81.68$ observed in Model 2. Similarly, $ITC_3$ (bans on arrivals from some regions) results in a coefficient of $-65.76$. $ITC_2$ ($-51.82$) and $ITC_1$ ($-25.37$) have comparable factors to Model 2.
+
+The impact of including new COVID-19 cases in the analysis is limited, the coefficient is 0.0005 and statistically insignificant.
+
+
+
+\paragraph{Summary}
+\
+
+In summary, the EU-wide regression analysis shows that \gls{itc} dummies explain a substantial portion of the variation in passenger volumes. Model 1, which includes only COVID-19 case numbers, explains a minimal amount of the variation. Models 2 and 3 demonstrate significantly stronger explanatory power with the inclusion of \gls{itc} dummies. The coefficients for COVID-19 cases in Model 3 are not statistically significant, indicating limited explanatory power for case numbers when \gls{itc} restrictions are included.
+
+
+
+\begin{table}[H]
+\centering
+\caption{Regression Results for EU-wide Analysis (Panel Model)}
+\label{tab:regression_results_eu}
+\renewcommand{\arraystretch}{1.45} 
+\begin{tabular}{llr}
+\toprule
+\textbf{Model} & \textbf{Metric} & \textbf{EU-wide} \\
+\midrule
+\multirow{5}{*}{\textbf{Model 1: New Cases Only}} 
+    & New Cases per 100k  & 0.0023*** \\
+    & $R^2$               & 0.0179 \\
+    & Adj. $R^2$          & -0.0102 \\
+    & F-Statistic         & 17.24 \\
+    & p-value             & $3.6 \times 10^{-5}$ \\
+\cmidrule(lr){1-3}
+\multirow{6}{*}{\textbf{Model 2: ITC Dummies Only}} 
+    & ITC\_1              & -24.25*** \\
+    & ITC\_2              & -51.60*** \\
+    & ITC\_3              & -65.85*** \\
+    & ITC\_4              & -81.68*** \\
+    & $R^2$               & 0.7087 \\
+    & Adj. $R^2$          & 0.6994 \\
+    & F-Statistic         & 572.28 \\
+    & p-value             & $< 2.2 \times 10^{-16}$ \\
+\cmidrule(lr){1-3}
+\multirow{7}{*}{\textbf{Model 3: Both Cases and ITC}} 
+    & New Cases per 100k  & 0.0005 \\
+    & ITC\_1              & -25.37*** \\
+    & ITC\_2              & -51.82*** \\
+    & ITC\_3              & -65.76*** \\
+    & ITC\_4              & -81.52*** \\
+    & $R^2$               & 0.7095 \\
+    & Adj. $R^2$          & 0.6999 \\
+    & F-Statistic         & 459.07 \\
+    & p-value             & $< 2.2 \times 10^{-16}$ \\
+\bottomrule
+\end{tabular}
+\renewcommand{\arraystretch}{1} 
+\vspace{0.5em} 
+\newline
+\footnotesize \textit{Note:} $^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01.
+\end{table}
+
+\newpage
+
+
+
+
+
+
+
+\chapter{Discussion}
+
+\section{Interpretation of the Results}
+
+\subsection*{Descriptive Analysis}
+
+The COVID-19 pandemic was an unprecedented challenge to the aviation industry, disrupting years of steady growth across the EU. Prior to the pandemic, passenger numbers increased at an average annual rate of 5.01\% from 2012 to 2019. This surpassed industry forecasts by Airbus in 2016 (4.5\%) \footcite[10]{airbus2016} and Boeing in 2014 (4.2\%) \footcite[3]{boeing2014}. Spain is a strong leisure travel market, with an average tourist share of around 17\% and passenger share of 18\% of EU-27 countries from 2012 to 2023. Spain led with an average \gls{yoy} growth rate of 5.04\%. Germany and France, with lower tourist shares, had high shares of passenger traffic (17\% and 14\% respectively) due to their roles as business travel hubs.
+
+The decline in air travel was primarily driven by the implementation of \gls{itc}, ranging from screening measures to complete border closures. The descriptive analysis (Section~\ref{sec:descriptive_analysis}) revealed that passenger volumes fell by around 99\% in the selected countries under \gls{itc} level 4 in Spain \& Germany and level 3 in France \& Italy when cases were still relatively low. These findings align with existing literature emphasizing the role of policy measures in influencing air travel demand during crises \footcite[3]{IACUS2020}. The literature showed that the EU-27 air traffic levels declined to just 20\% of their 2019 levels by April 2020 \footcite[2]{dube2021b}. This is also reflected in Figure~\ref{fig:tourist_passenger_drop}, where passenger numbers across the four countries fell to approximately 20-25\% of their 2019 levels. Given that these four countries collectively account for around 62\% of EU-27 air passenger numbers, their trends are representative of the region.
+
+
+\newpage
+\subsection*{Regression Analysis}
+
+\paragraph{Selected Countries}
+\
+
+The regression analysis for the selected countries highlights the limited role of COVID-19 case numbers in explaining changes in passenger numbers. Model 1 demonstrates a low $R^2$, where case numbers only minimally contribute to the observed changes. The positive but small coefficients further indicate that case numbers had limited direct influence on passenger volumes, likely due to additional influencing factors, such as government restrictions and behavioral changes. The negative intercepts in Model 1 reveal that without COVID-19 cases, passenger volumes were significantly below pre-pandemic levels. This suggests disruptions unrelated to case numbers. The adjusted $R^2$ is negative for Spain ($-0.03$) and small for the other countries, also highlighting the weak model fit.
+
+Model 2 shows a significant improvement, with high $R^2$ values, indicating the dominant role of International Travel Control (\gls{itc}) levels in reducing passenger volumes. The coefficients are relative to no restrictions. For example in Germany, the combination of $ITC_4$ ($-77.48$) and the intercept ($-21.14$) results in a 98.62\% decline of air passenger numbers. Spain shows a comparable reduction of 98.22\%, when combining the $ITC_4$ coefficient ($-98.70$) with the intercept ($0.48$). In France and Italy $ITC_3$ was the highest level of restriction, where air passenger volumes declined by 80.53\% and 78.71\%, respectively. These results highlight the varying impacts of \gls{itc} levels across countries. Incremental increases in restrictions consistently reduced passenger numbers, with the largest declines seen when moving from $ITC_2$ (quarantine) to $ITC_3$ (regional bans). This showed an additional drop of 28.34\% in Germany and 42.59\% in Spain. The step from $ITC_3$ to $ITC_4$ (complete border closure) showed relatively smaller effects.
+
+Model 3 includes both \gls{itc} levels and COVID-19 case numbers. While \gls{itc} remains the dominant driver, case numbers are statistically significant in Spain. Here, a 1,000 case per 100k increase corresponds to a 4.1\% reduction in passenger numbers. In Germany, France and Italy, case numbers remain insignificant. These results align with findings from the literature that government-imposed restrictions were more influential in reducing air passenger numbers \footcite[10]{dube2021b}.
+
+During the Omicron wave, Spain's positive intercepts in Model 2 ($0.48$) and Model 3 ($0.84$) reflect a surge in COVID-19 cases. Typically, \gls{itc} are positively correlated with new cases and negatively with passenger numbers. However in this period, \gls{itc} and cases showed a negative correlation.
+
+\newpage
+
+\paragraph{EU-Wide}
+\
+
+The EU-wide analysis confirms the trends observed in the selected countries. Model 1 highlights the minimal explanatory power of COVID-19 case numbers with an $R^2$ value below 2\%. While the coefficient is statistically significant at the one percent levels, its small size reinforces the limited role of case counts in driving passenger declines.
+
+Model 2 highlights the importance of \gls{itc} levels. $ITC_1$ (screening) reduces passenger volumes by 24.25\%, $ITC_2$ (quarantine) by an additional 27.35\% and $ITC_3$ (regional bans) by further 14.25\%. Complete border closures ($ITC_4$) corresponds to a 81.68\% decline in passenger numbers compared to 2019. These results align with the initial implementation of restrictions, when passenger volumes fell to just 20\% of 2019 levels in early 2020 \footcite[3]{IACUS2020}. Model 3 validates these findings, where coefficients remain consistent and significant.
+
+Incremental increases in \gls{itc} consistently reduced passenger numbers. The step from $ITC_1$ (screening) to $ITC_2$ (quarantine) had the highest impact at the EU-wide level. This reflects the role of early quarantine measures in slowing down mobility. 
+\\
+
+The uncertainty of the pandemic led to strict \gls{itc} in early 2020. Later, as vaccines were rolled out and healthcare systems adjusted, governments seemed to rely more on local restrictions. Despite rising case numbers, complete border closures were no longer implemented. 
+
+
+\section{Tourism vs. Business Travel Recovery}
+
+Market-specific dynamics played a critical role in driving recovery. The descriptive analysis (Section~\ref{sec:descriptive_analysis}) revealed stronger recoveries in tourism-heavy markets, such as Spain and Italy, during the summers of 2020 and 2021. These recoveries may have been temporarily slowed down by case surges during the Omicron wave. However, this analysis did not specifically quantify the impact of these case surges on passenger numbers. 
+
+By 2022, Spain and Italy showed significant rebounds, with passenger volumes reaching 7\% and 15\% below 2019 levels, respectively, while Germany lagged further behind at 35\% below. France followed at 20\% below pre-pandemic levels. These findings are consistent with the literature, which indicates that EU-wide passenger numbers in 2022 were only 15\% below 2019 levels \footcite[137]{sun2023}. 
+
+By October 2023, the EU-27 weighted average had returned to pre-pandemic levels, as shown in Table~\ref{tab:first_above_100}. Spain and Italy reached this earlier, in January 2023 and April 2023, while France followed in May 2024. This aligns with Airbus’ forecast, which anticipated a full recovery between 2023 and 2025 \footcite[18]{airbus2023}.
+
+In early 2024, passenger volumes in Spain and Italy had exceeded pre-pandemic levels by almost 20\%. Germany and France, which rely more on business travel, experienced slower recoveries. By May 2024, Germany had still not reached 2019 levels in air passenger numbers, while France recorded a modest 2\% increase. This slower recovery aligns with research highlighting structural changes in business travel demand. The rise of digital communication tools and reduced corporate travel significantly delayed recovery times for business-oriented markets \footcite[9]{dube2021b}$^,$\footcite[4]{suau2020}$^,$\footcite{schwarzmuller2018}$^,$\footcite{denstadli2013}. The resilience of leisure travel, driven by consumer preferences for vacations, proved less affected by long-term changes such as remote work adoption.
+
+The slower recovery of international routes, as noted in the literature \footcite[144-147]{sun2023}, presented significant challenges for Full-Service Network Carriers (\gls{fsncs}), which depend heavily on international markets. These markets faced longer recovery times, as international routes were the last to resume due to the uneven lifting of travel restrictions \footcite[5]{suau2020}. According to the literature domestic air capacity in Europe surpassed 2019 levels in May 2023, while international capacity lagged behind at 90\% \footcite[18]{airbus2023}. This had a greater impact on business-focused markets, which are more reliant on international corporate travel. To adapt, \gls{fsncs} reduced their reliance on wide-body aircraft, larger planes typically used for long-haul international routes, due to their higher passenger capacity and extended range. Instead, they prioritized narrow-body planes, which are smaller, single-aisle aircraft with lower operating costs and flexibility for medium- to long-haul routes. This enabled airlines to recover demand on long-haul routes gradually by operating flights with fewer passengers while maintaining cost-effectiveness  \footcite[3-5]{suau2020}. Despite these adjustments, the slow rebound in business travel limited the ability of \gls{fsncs} to restore international traffic to pre-pandemic levels. In contrast, \gls{lcs} benefited from the recovery by shifting their focus to larger airports and point-to-point routes \footcite[144-147]{sun2023}. 
+\\
+
+In summary, the COVID-19 pandemic had a significant impact on the EU aviation sector, with government-imposed travel restrictions playing a major role in reducing passenger volumes. Tourism-heavy markets like Spain and Italy demonstrated faster recovery due to resilient leisure travel demand, surpassing pre-pandemic levels in early 2023. In contrast, business-oriented markets such as Germany and France lagged behind, slowed by the delayed international capacity and structural changes in business travel.
+
+\section{Limitations of the Study}
+
+The analysis focuses primarily on the short-term impacts of COVID-19, which limits its ability to fully capture medium- and long-term changes in travel behavior and market dynamics, such as the potential permanent decline of business travel.
+
+The study uses monthly averages of \gls{itc}. While this method captures general trends, it smooths out short-term policy changes. This could potentially underestimate immediate impacts on passenger volumes.
+
+The focus on the four selected countries Spain, Germany, France and Italy provides valuable insights, as these countries represent approximately 62\% of EU passenger traffic. However, the findings may not generalize to other EU member states with different aviation market structures or pandemic responses. Additionally, not all countries, such as France and Italy, implemented the strictest \gls{itc} level 4. This limits the study's ability to fully assess the impact of complete border closures on air travel demand in the EU-wide analysis. COVID-19 case numbers only had a minor influence, with statistically significant effects observed in Spain, though it is possible that significant effects in other countries went unobserved due to limitations in the analysis.
+
+Several non-pandemic-related variables that could influence air travel, such as changes in fuel prices, geopolitical events or broader economic conditions, are excluded from the analysis. Similarly, pandemic-related factors, such as vaccinations rates or the number of intensive care unit patients, are not explicitly captured. These could influence travel behavior. The exclusion of these factors may affect the scope of the findings. 
+
+While COVID-19 case numbers are used to represent disease spread, the regression analysis shows their direct impact on passenger reductions is limited. It is possible that a statistically significant relationship between case numbers and the relative change in passenger numbers could be observed when focusing on specific timeframes, such as the Omicron wave. However the models used in this analysis span the full three-year period, which makes it challenging to capture short-term dynamics.
+
+\chapter{Conclusion}
+
+\paragraph{Summary of Key Findings}
+\
+
+The analysis confirms the severe and immediate impact of the COVID-19 pandemic on the EU aviation industry. Passenger numbers fell by up to 99\% during the initial outbreak. Government-imposed travel restrictions played a central role in limiting air travel. The regression analysis showed \gls{itc} levels explaining approximately 90\% of the variation in passenger volumes. In contrast, COVID-19 case numbers had only a minor influence, with statistically significant effects only observed in Spain.
+
+Recovery patterns varied significantly across markets. Tourism-driven countries like Spain and Italy rebounded quicker driven by strong leisure travel demand. In contrast, business-focused markets such as Germany and France experienced slower recoveries. This may due to the decline in corporate travel, the delayed recovery of international travel and the adoption of remote work and digital communication tools. 
+
+\paragraph{Suggestions for Future Research}
+\
+
+Future research could analyze the medium- and long-term impacts of COVID-19 on travel behavior, such as the potential permanent decline of business travel. Expanding the analysis to more or all EU-27 member states would provide broader insights into how other EU countries responded to the pandemic. 
+
+Using daily or weekly data could capture short-term policy changes that are smoothed out in this analysis. Additionally, focusing on specific timeframes, such as the Omicron wave could highlight how surges in case numbers influenced passenger traffic.
+
+Including both non-pandemic-related and pandemic-related variables could provide a better understanding of air travel trends during the pandemic. Finally, analyzing the balance between international and domestic travel could offer more insights into recovery patterns.
+
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
+
+The code used for data analysis, including the generation of tables, regressions and plots, is available at this {\hypersetup{urlcolor=TUMBlue}\href{https://github.com/valle000111/aviation-covid}{GitHub Repository}}.
+
+\noindent Please refer to this repository for reproducibility and additional details on the analytical methods used in this thesis.
+\\
+
+\noindent Unless otherwise indicated, all plots and tables in this thesis were created by the author using the described datasets.
+
+
+
+
+
+\newpage
+
+\chapter*{Declaration of Authorship}
+I hereby declare that I have written the present thesis with the title "The Impact of COVID-19 on the Number of Flight Passengers in the European Union: A Pre-, During-, and Post-Pandemic Analysis" independently and without the use of other than the indicated aids. I affirm that I have not used any sources other than those indicated and that all passages taken verbatim or in spirit from published and unpublished writings are identified as such. Furthermore, I assure that the work has not yet been submitted in the same or similar form in the context of another examination. I am aware that in the event of deception, the thesis will be graded as "failed".
+
+\vspace{30mm}
+
+\noindent\rule{5cm}{.4pt}\hfill\rule{5cm}{.4pt}\par
+\hspace{8mm} date, place \hspace{75mm} signature
+
+    
+    
+\newpage
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
+
+
+
+
+
+\end{document}

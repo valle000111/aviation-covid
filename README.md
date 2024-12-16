@@ -23,7 +23,7 @@ Written at the Chair of Applied Econometrics at TUM School of Management in 2024
   - `tourism.csv`: 
     Data on tourism arrivals for the selected countries.
 
-`covid.csv` and `international_travel_covid.csv` are given as backup in case the web download is not available anymore.
+`covid.csv` and `international_travel_covid.csv` are given as a Backup in Case the Web Download is not available anymore.
 
 
 - **`LaTeX Sources`**:  
@@ -56,7 +56,7 @@ Written at the Chair of Applied Econometrics at TUM School of Management in 2024
 To replicate the analysis, follow these steps:
 1. Clone this repository.
 2. Open `Data Setup.R` from the `R Files` folder to load, clean, and merge the datasets. Unless you are working in RStudio, set your file path for the `flight_arrivals.csv`, `flight_departures.csv`, and `tourism.csv` files.
-3. Ensure all required R packages are installed.
+3. Ensure all required R packages are installed. Install commands are in the `Data Setup.R` file.
 4. Run the scripts in the `Plots` and `Tables` subfolders to generate the figures and tables.
 5. Use `Regression.R` to perform regression analyses and generate outputs.
 
